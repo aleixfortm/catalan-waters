@@ -33,7 +33,7 @@
     width: 100vw;
     background-color: black;
     height: 100vh;
-    transition: opacity 1.5s ease-in-out 0s, visibility 1.5s 0s;
+    transition: opacity 1s ease-in 0s;
   }
 
   .background-container.is-loading {
@@ -50,11 +50,11 @@
     background-image: url('../assets/background2.jpg');
     background-size: cover;
     opacity: 0.05;
-    transition: opacity 1s ease-in-out 0s, visibility 1.5s 0s;
+    transition: opacity 1s ease-in 0.5s, visibility 1.5s 0s;
   }
 
   .background-image.is-loading {
-    opacity: 1;
+    opacity: 0.8;
   }
 
   .background-noise {

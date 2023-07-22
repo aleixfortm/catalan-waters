@@ -30,7 +30,7 @@ export default {
   mounted() {
       setTimeout(() => {
         this.isLoading = true;
-      }, 10); // Set the delay time in milliseconds
+      }, 150); // Set the delay time in milliseconds
     },
   }
 </script>
@@ -44,14 +44,14 @@ body, html {
 
 .pollancre {
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.918);
+    color: rgba(255, 255, 255, 0.863);
     letter-spacing: 0.225rem;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 1.5;
     font-weight: 300;
     opacity: 0;
-    margin-top: 20px;
-    transition: 1s ease-in all;
+    margin-top: 30px;
+    transition: opacity 0.4s ease-in-out 0s, visibility 1.5s 0s, margin-top ease-in 1s;
 }
 
 .pollancre.is-loading {
@@ -66,7 +66,7 @@ body, html {
     line-height: 1.5;
     font-weight: 300;
     opacity: 0;
-    transition: 2s ease-in-out all;
+    transition: 1.2s ease-in-out all;
 }
 
 .pollancre-secondary.is-loading {
@@ -86,7 +86,7 @@ body, html {
   border-radius: 15px;
   margin: 0 0 0 200px;
   opacity: 0;
-  transition: 1.5s ease-in all;
+  transition: 1s ease-in all;
 }
 
 .main-container__img.is-loading {

@@ -2,9 +2,13 @@
   <div id="app">
       <background-image>
           <div class="main-container">
-            <div class="pollancre">EVOLUTION OF CATALAN WATER LEVELS</div>
             <div>
-              <img src="./assets/image.jpg" alt="catwaters-logo" class="main-container__img">
+              <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
+              <br>
+              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources, leading to acute scarcity and posing significant challenges to water availability.</div>
+            </div>
+            <div>
+              <img src="./assets/image2.jpg" alt="catwaters-logo" class="main-container__img" :class="{ 'is-loading': isLoading }">
             </div>
           </div>
       </background-image>
@@ -17,8 +21,18 @@ import BackgroundImage from "./components/BackgroundImage.vue"
 export default {
   components: {
     BackgroundImage
+  },
+  data() {
+    return {
+      isLoading: false
+    }
+  },
+  mounted() {
+      setTimeout(() => {
+        this.isLoading = true;
+      }, 10); // Set the delay time in milliseconds
+    },
   }
-}
 </script>
 
 <style>
@@ -30,24 +44,53 @@ body, html {
 
 .pollancre {
     text-transform: uppercase;
-    color: rgba(255,255,255,0.839);
+    color: rgba(255, 255, 255, 0.918);
     letter-spacing: 0.225rem;
-    width: calc(100% + 0.225rem);
-    font-size: 1em;
+    font-size: 30px;
     line-height: 1.5;
     font-weight: 300;
+    opacity: 0;
+    margin-top: 20px;
+    transition: 1s ease-in all;
+}
+
+.pollancre.is-loading {
+  opacity: 1;
+  margin-top: 0px;
+}
+
+.pollancre-secondary {
+    color: rgba(255, 255, 255, 0.527);
+    letter-spacing: 0.225rem;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 300;
+    opacity: 0;
+    transition: 2s ease-in-out all;
+}
+
+.pollancre-secondary.is-loading {
+  opacity: 1;
 }
 
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1080px;
+  width: 1300px;
 }
 
 .main-container__img {
-  width: 500px;
+  width: 550px;
   height: auto;
   border-radius: 15px;
+  margin: 0 0 0 200px;
+  opacity: 0;
+  transition: 1.5s ease-in all;
 }
+
+.main-container__img.is-loading {
+  opacity: 1;
+}
+
 </style>

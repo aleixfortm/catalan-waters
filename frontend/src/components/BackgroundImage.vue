@@ -6,9 +6,8 @@
       <!-- Noise Pattern -->
       <div class="background-noise"></div>
 
-      <div class="content">
-        <slot></slot>
-      </div>
+      <slot></slot>
+
     </div>
   </template>
   

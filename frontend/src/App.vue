@@ -2,30 +2,41 @@
   <div id="app">
       <background-image>
           <div class="main-container">
-            <div>
-              <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
-              <br>
-              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources, leading to acute scarcity and posing significant challenges to water availability.</div>
-            </div>
-            <div>
-              <img src="./assets/image2.jpg" alt="catwaters-logo" class="main-container__img" :class="{ 'is-loading': isLoading }">
+
+            <div class="svg-container">
+              <svg-map class="main-container__img" :class="{ 'is-loading': isLoading }"></svg-map>
             </div>
           </div>
+
       </background-image>
   </div>
 </template>
 
 <script>
-import BackgroundImage from "./components/BackgroundImage.vue"
+import BackgroundImage from "./components/BackgroundImage.vue";
+import SvgMap from "./components/SvgMap.vue";
 
 export default {
   components: {
-    BackgroundImage
+    BackgroundImage,
+    SvgMap
   },
   data() {
     return {
-      isLoading: false
+      isLoading: false,
     }
+  },
+  methods: {
+    handleMouseOver(event) {
+      // Handle hover over a region
+      const regionId = event.target.getAttribute('id'); // Get the ID of the region
+      console.log(`Hovered over region with ID: ${regionId}`);
+    },
+    handleMouseOut(event) {
+      // Handle leaving a region
+      const regionId = event.target.getAttribute('id'); // Get the ID of the region
+      console.log(`Left region with ID: ${regionId}`);
+    },
   },
   mounted() {
       setTimeout(() => {
@@ -59,6 +70,14 @@ body, html {
   margin-top: 0px;
 }
 
+.svg-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add padding as needed */
+}
+
 .pollancre-secondary {
     color: rgba(255, 255, 255, 0.527);
     letter-spacing: 0.225rem;
@@ -74,18 +93,27 @@ body, html {
 }
 
 .main-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1300px;
+  position: absolute;
+  top: 50%; /* Center the content vertically */
+  left: 50%; /* Center the content horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
+  text-align: center; /* Center the text inside the div */
+  color: #ffffff; /* Set the text color */
+}
+
+.text {
+  flex: 1;
+  padding: 20px; /* Add padding as needed */
 }
 
 .main-container__img {
-  width: 550px;
-  height: auto;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 15px;
-  margin: 0 0 0 200px;
   opacity: 0;
+  flex: 1;
+
+  padding: 20px; /* Add padding as needed */
   transition: 1s ease-in all;
 }
 

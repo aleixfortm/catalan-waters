@@ -282,7 +282,7 @@ export default {
          }
 
    
-         if (regionId !== "map-cat") {
+         if (regionId !== "cat-map") {
             this.showTooltip = true;
          }
 
@@ -341,7 +341,7 @@ export default {
 .responsive-svg {
    transform: scale(1);
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 path {

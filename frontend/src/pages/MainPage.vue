@@ -135,4 +135,11 @@ export default {
   opacity: 1;
 }
 
+@media (max-width: 1080px) {
+  .main-container {
+    flex-direction: column;
+    height: 75%;
+  }
+}
+
 </style>

@@ -1,10 +1,11 @@
 <template>
       <background-image>
+
           <div class="main-container">
             <div class="text-container">
               <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
               <br>
-              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources, leading to acute scarcity and posing significant challenges to water availability.</div>
+              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources. During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
             </div>
             <div class="svg-container">
               <svg-map class="main-container__img" :class="{ 'is-loading': isLoading }"></svg-map>

@@ -232,12 +232,12 @@
          {{ tooltipContent }}
       </div>
       <div class="tooltip-data">
-         <b>Water percentage</b>
+         <b>Water volume [%]</b>
          <br>
          35%
       </div>
       <div class="tooltip-data">
-         <b>Water volume</b>
+         <b>Water volume [L]</b>
          <br>
          3404L
       </div>
@@ -269,10 +269,19 @@ export default {
          // Set the tooltip content based on the region
          this.tooltipContent = regionId; // You can customize the content as needed
 
-         // Update the tooltip position and show it
-         this.tooltipX = mouseX;
-         this.tooltipY = mouseY;
+         if (mouseX >= 1500) {
+            this.tooltipX = mouseX - 300
+         } else {
+            this.tooltipX = mouseX;
+         }
          
+         if (mouseY >= 460) {
+            this.tooltipY = mouseY - 280
+         } else {
+            this.tooltipY = mouseY;
+         }
+
+   
          if (regionId !== "map-cat") {
             this.showTooltip = true;
          }
@@ -340,7 +349,7 @@ path {
 }
 
 path:hover {
-    fill: rgba(255, 255, 255, 0.918) !important;
+    fill: rgb(97, 255, 189) !important;
     stroke: rgb(0, 0, 0) !important;
     stroke-width: 0.1%;
     cursor: pointer;

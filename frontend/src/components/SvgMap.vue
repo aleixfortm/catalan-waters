@@ -272,7 +272,11 @@ export default {
          // Update the tooltip position and show it
          this.tooltipX = mouseX;
          this.tooltipY = mouseY;
-         this.showTooltip = true;
+         
+         if (regionId !== "map-cat") {
+            this.showTooltip = true;
+         }
+
       },
       handleMouseOut() {
          // Hide the tooltip when the mouse moves out of the region

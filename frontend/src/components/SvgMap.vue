@@ -1,5 +1,5 @@
 <template>
-    <svg @mouseover="handleMouseOver"
+    <svg @mouseover="handleMouseOver" class="responsive-svg" viewBox="0 0 420 400"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://web.resource.org/cc/"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -236,6 +236,7 @@ export default {
         // Handle hover over a region
         const regionId = event.target.getAttribute('id'); // Get the ID of the region
         console.log(`Hovered over region with ID: ${regionId}`);
+        
         },
         handleMouseOut(event) {
         // Handle leaving a region
@@ -248,18 +249,18 @@ export default {
 </script>
 
 <style scoped>
-#cat-map {
-    transform: scale(1.6);
-    width: 420px;
-    height: 400px;
-}
+.responsive-svg {
+   transform: scale(2.5);
+    width: 100%;
+    height: auto; /* To maintain the aspect ratio */
+  }
 
 path {
    transition: 0.1s all;
 }
 
 path:hover {
-    fill: rgb(189, 255, 230) !important;
+    fill: rgb(145, 255, 213) !important;
     stroke: rgb(0, 0, 0) !important;
     stroke-width: 0px !important;
     cursor: pointer;

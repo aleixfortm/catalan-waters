@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+
       <background-image>
           <div class="main-container">
 
@@ -9,7 +9,7 @@
           </div>
 
       </background-image>
-  </div>
+
 </template>
 
 <script>

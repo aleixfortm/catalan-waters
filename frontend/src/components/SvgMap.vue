@@ -254,9 +254,14 @@ export default {
     height: 400px;
 }
 
+path {
+   transition: 0.1s all;
+}
+
 path:hover {
-    fill: rgb(0, 255, 128) !important;
+    fill: rgb(189, 255, 230) !important;
     stroke: rgb(0, 0, 0) !important;
-    stroke-width: 1px !important;
+    stroke-width: 0px !important;
+    cursor: pointer;
 }
 </style>

@@ -1,7 +1,11 @@
 <template>
       <background-image>
           <div class="main-container">
-
+            <div class="text-container">
+              <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
+              <br>
+              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources, leading to acute scarcity and posing significant challenges to water availability.</div>
+            </div>
             <div class="svg-container">
               <svg-map class="main-container__img" :class="{ 'is-loading': isLoading }"></svg-map>
             </div>
@@ -48,11 +52,7 @@ export default {
 
 
 <style>
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Source Sans Pro', sans-serif;
-}
+
 
 .pollancre {
     text-transform: uppercase;
@@ -71,12 +71,18 @@ body, html {
   margin-top: 0px;
 }
 
+.text-container {
+  flex: 1;
+
+  padding: 10px;
+}
+
 .svg-container {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px; /* Add padding as needed */
+  padding: 40px;
 }
 
 .pollancre-secondary {
@@ -95,16 +101,20 @@ body, html {
 
 .main-container {
   position: absolute;
-  top: 50%; /* Center the content vertically */
-  left: 50%; /* Center the content horizontally */
-  transform: translate(-50%, -50%); /* Adjust for centering */
-  text-align: center; /* Center the text inside the div */
-  color: #ffffff; /* Set the text color */
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+  text-align: center; 
+  color: #ffffff;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .text {
   flex: 1;
-  padding: 20px; /* Add padding as needed */
+  padding: 20px;
 }
 
 .main-container__img {

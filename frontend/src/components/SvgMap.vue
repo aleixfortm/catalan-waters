@@ -250,7 +250,7 @@ export default {
 
 <style scoped>
 .responsive-svg {
-   transform: scale(2.5);
+   transform: scale(1);
     width: 100%;
     height: auto; /* To maintain the aspect ratio */
   }

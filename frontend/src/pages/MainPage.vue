@@ -23,13 +23,12 @@
 <script>
 import BackgroundImage from "../components/BackgroundImage.vue";
 import SvgMap from "../components/SvgMap.vue";
-import MainLinechart from "../components/MainLinechart.vue";
+
 
 export default {
   components: {
     BackgroundImage,
-    SvgMap,
-    MainLinechart
+    SvgMap
   },
   data() {
     return {

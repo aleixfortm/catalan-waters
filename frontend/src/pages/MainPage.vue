@@ -1,10 +1,16 @@
 <template>
-  <div class="main-container">
-    <div class="pollancre">POLLANCRE AAHHAHAH</div>
-    <div class="svg-container" :class="{ 'is-loading': isLoading }">
-      <svg-map></svg-map>
+    <div class="main-container">
+      <div class="text-container">
+        <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
+        <br>
+        <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">
+          Even in highly developed regions, extended periods of drought can severely deplete water resources. 
+          During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
+      </div>
+      <div class="svg-container" :class="{ 'is-loading': isLoading }">
+        <svg-map class="main-container__img"></svg-map>
+      </div>
     </div>
-  </div>
 </template>
 
 
@@ -88,6 +94,7 @@ export default {
 .main-container {
   text-align: center; 
   color: #ffffff;
+  margin: auto;
   width: 90%;
   display: flex;
   justify-content: space-between;

@@ -293,12 +293,15 @@ export default {
       },
     },
     mounted() {
+
       const paths = document.querySelectorAll('path');
       console.log(paths)
       // Loop through each <path> and assign a color fill
       paths.forEach((path, index) => {
+         const randNum = Math.random() < 0.5 ? 1 : 2;
+         console.log(index)
          // Assign a different color fill based on the index (you can modify this as needed)
-         const fillColor = index % 2 === 0 ? 'rgb(145, 211, 255)' : 'rgb(102, 150, 255)';
+         const fillColor = randNum === 2 ? 'rgb(145, 211, 255)' : 'rgb(102, 150, 255)';
          path.style.cssText = `fill: ${fillColor}`;
       });
     }

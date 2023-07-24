@@ -8,9 +8,10 @@
               <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">
                 Even in highly developed regions, extended periods of drought can severely deplete water resources. 
                 During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
+              <main-linechart class="chart"></main-linechart>
             </div>
-            <div class="svg-container">
-              <svg-map class="main-container__img" :class="{ 'is-loading': isLoading }"></svg-map>
+            <div class="svg-container" :class="{ 'is-loading': isLoading }">
+              <svg-map class="main-container__img"></svg-map>
             </div>
           </div>
 
@@ -22,11 +23,13 @@
 <script>
 import BackgroundImage from "../components/BackgroundImage.vue";
 import SvgMap from "../components/SvgMap.vue";
+import MainLinechart from "../components/MainLinechart.vue";
 
 export default {
   components: {
     BackgroundImage,
-    SvgMap
+    SvgMap,
+    MainLinechart
   },
   data() {
     return {
@@ -48,14 +51,17 @@ export default {
   mounted() {
       setTimeout(() => {
         this.isLoading = true;
-      }, 150); // Set the delay time in milliseconds
+      }, 1150); // Set the delay time in milliseconds
     },
   }
 </script>
 
 
 <style>
-
+.chart {
+  height: 300px;
+  width: 1000px;
+}
 
 .pollancre {
     text-transform: uppercase;
@@ -82,10 +88,16 @@ export default {
 
 .svg-container {
   flex: 1;
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
+  transition: all 0.8s ease-in;
+}
+
+.svg-container.is-loading {
+  opacity: 1;
 }
 
 .pollancre-secondary {
@@ -126,7 +138,6 @@ export default {
   border-radius: 15px;
   opacity: 0;
   flex: 1;
-
   padding: 20px; /* Add padding as needed */
   transition: 1s ease-in all;
 }

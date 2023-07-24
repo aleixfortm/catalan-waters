@@ -8,7 +8,6 @@
               <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">
                 Even in highly developed regions, extended periods of drought can severely deplete water resources. 
                 During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
-              <main-linechart class="chart"></main-linechart>
             </div>
             <div class="svg-container" :class="{ 'is-loading': isLoading }">
               <svg-map class="main-container__img"></svg-map>
@@ -50,7 +49,7 @@ export default {
   mounted() {
       setTimeout(() => {
         this.isLoading = true;
-      }, 1150); // Set the delay time in milliseconds
+      }, 350); // Set the delay time in milliseconds
     },
   }
 </script>

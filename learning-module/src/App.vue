@@ -3,6 +3,7 @@
   <div class="project-desc">Create a component that shows the name of 3 friends. The names cannot be written in the HTML code, and must be passed from the script section to the template section.
   Hints: variables that are sharable across the component are written within the "data" section of the script. Variables in the template are written inside double curly braces.</div>
   <project-one></project-one>
+  <div class="project-desc">Create a component variable that is set to false or true. Make one of your friends render depending on the value of that variable. Hint: use v-if</div>
   <br>
   <div class="project-title">PROJECT 2</div><br>
 

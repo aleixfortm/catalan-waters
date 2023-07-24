@@ -229,17 +229,17 @@
       <div class="tooltip-data">
          <b>RegionID</b>
          <br>
-         {{ tooltipContent }}
+         {{ region }}
       </div>
       <div class="tooltip-data">
          <b>Water volume [%]</b>
          <br>
-         35%
+         {{ percentage }}%
       </div>
       <div class="tooltip-data">
          <b>Water volume [L]</b>
          <br>
-         3404L
+         {{ volume }}L
       </div>
       <div class="disclaimer">Actual real-time data</div>
     </div>
@@ -253,7 +253,9 @@ export default {
          showTooltip: false,
          tooltipX: 0,
          tooltipY: 0,
-         tooltipContent: "",
+         region: "",
+         percentage: 0,
+         volume: 0
       };
    },
     methods: {
@@ -267,7 +269,13 @@ export default {
          const mouseY = event.pageY;
 
          // Set the tooltip content based on the region
-         this.tooltipContent = regionId; // You can customize the content as needed
+         this.region = regionId;
+         var randomDecimal = Math.random();
+         var randomValue = randomDecimal * 80;
+         this.percentage = Math.floor(randomValue);
+         randomDecimal = Math.random();
+         randomValue = randomDecimal * 10000;
+         this.volume = Math.floor(randomValue);
 
          if (mouseX >= 1500) {
             this.tooltipX = mouseX - 300

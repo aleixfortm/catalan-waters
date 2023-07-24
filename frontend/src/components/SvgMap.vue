@@ -1,5 +1,5 @@
 <template>
-   <svg @mouseover="handleMouseOver" @mouseout="handleMouseOut" class="responsive-svg" viewBox="0 0 420 400"
+   <svg @mouseover="handleMouseOver" @mouseout="handleMouseOut" @mousemove="handleMouseMove" class="responsive-svg" viewBox="0 0 420 400"
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:cc="http://web.resource.org/cc/"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -22,35 +22,6 @@
             d="M 0,0 L 0,413.26299 L 601.51181,413.26299 L 601.51181,0 L 0,0 z " />
       </clipPath>
    </defs>
-   <sodipodi:namedview
-      id="base"
-      pagecolor="#ffffff"
-      bordercolor="#666666"
-      borderopacity="1.0"
-      inkscape:pageopacity="0.0"
-      inkscape:pageshadow="2"
-      inkscape:zoom="1.28"
-      inkscape:cx="212.5"
-      inkscape:cy="200"
-      inkscape:document-units="px"
-      inkscape:current-layer="layer1"
-      inkscape:window-width="1024"
-      inkscape:window-height="710"
-      inkscape:window-x="-4"
-      inkscape:window-y="-4"
-      height="400px"
-      width="425px" />
-   <metadata
-      id="metadata1372">
-      <rdf:RDF>
-         <cc:Work
-            rdf:about="">
-         <dc:format>image/svg+xml</dc:format>
-         <dc:type
-            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-         </cc:Work>
-      </rdf:RDF>
-   </metadata>
    <g
       inkscape:label="Capa 1"
       inkscape:groupmode="layer"
@@ -225,7 +196,7 @@
       </g>
    </g>
    </svg>
-   <div v-if="showTooltip" class="tooltip" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
+   <div class="tooltip" v-if="showTooltip" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
       <div class="tooltip-data">
          <b>RegionID</b>
          <br>
@@ -259,14 +230,19 @@ export default {
       };
    },
     methods: {
+      handleMouseMove(event) {
+         // Get the mouse coordinates on mouse move
+         const mouseX = event.pageX;
+         const mouseY = event.pageY;
+
+         // Update the tooltip position based on the mouse coordinates
+         this.tooltipX = mouseX;
+         this.tooltipY = mouseY + 50;
+      },
       handleMouseOver(event) {
-         // const randNum = Math.random() < 0.5 ? 1 : -1;
 
          // Handle hover over a region
          const regionId = event.target.getAttribute('id'); // Get the ID of the region
-         // Get the mouse coordinates
-         const mouseX = event.pageX;
-         const mouseY = event.pageY;
 
          // Set the tooltip content based on the region
          this.region = regionId;
@@ -276,19 +252,6 @@ export default {
          randomDecimal = Math.random();
          randomValue = randomDecimal * 10000;
          this.volume = Math.floor(randomValue);
-
-         if (mouseX >= 1500) {
-            this.tooltipX = mouseX
-         } else {
-            this.tooltipX = mouseX;
-         }
-         
-         if (mouseY >= 460) {
-            this.tooltipY = mouseY
-         } else {
-            this.tooltipY = mouseY;
-         }
-
    
          if (regionId !== "cat-map") {
             this.showTooltip = true;
@@ -303,11 +266,9 @@ export default {
     mounted() {
 
       const paths = document.querySelectorAll('path');
-      console.log(paths)
       // Loop through each <path> and assign a color fill
-      paths.forEach((path, index) => {
+      paths.forEach(path => {
          const randNum = Math.random() < 0.5 ? 1 : 2;
-         console.log(index)
          // Assign a different color fill based on the index (you can modify this as needed)
          const fillColor = randNum === 2 ? 'rgb(145, 211, 255)' : 'rgb(102, 150, 255)';
          path.style.cssText = `fill: ${fillColor}`;
@@ -328,6 +289,7 @@ export default {
 
 .tooltip {
   position: absolute;
+  transform: translateX(-50%);
   background-color: #fff;
   padding: 10px;
   border: 0px solid #ccc;
@@ -336,7 +298,20 @@ export default {
   text-align: start;
   z-index: 9999; /* Ensure the tooltip appears above the SVG */
   color: black;
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.507)
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.507);
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid white;
 }
 
 .tooltip-data {

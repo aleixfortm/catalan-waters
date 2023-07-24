@@ -1,7 +1,9 @@
 <template>
+
     <div class="svg-container" :class="{ 'is-loading': isLoading }">
-      <svg-map class="main-container__img"></svg-map>
+      <svg-map></svg-map>
     </div>
+
 </template>
 
 
@@ -17,18 +19,6 @@ export default {
     return {
       isLoading: false,
     }
-  },
-  methods: {
-    handleMouseOver(event) {
-      // Handle hover over a region
-      const regionId = event.target.getAttribute('id'); // Get the ID of the region
-      console.log(`Hovered over region with ID: ${regionId}`);
-    },
-    handleMouseOut(event) {
-      // Handle leaving a region
-      const regionId = event.target.getAttribute('id'); // Get the ID of the region
-      console.log(`Left region with ID: ${regionId}`);
-    },
   },
   mounted() {
       setTimeout(() => {
@@ -76,8 +66,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  width: 900px;
+  padding: 10px;
+  width: 50%;
   transition: all 0.8s ease-in;
 }
 
@@ -100,10 +90,6 @@ export default {
 }
 
 .main-container {
-  position: absolute;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%);
   text-align: center; 
   color: #ffffff;
   width: 90%;

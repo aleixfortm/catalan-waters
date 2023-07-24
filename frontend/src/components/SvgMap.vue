@@ -227,7 +227,6 @@ export default {
       region: "",
       percentage: 0,
       volume: 0,
-      // Rest of the data properties...
     };
   },
   methods: {

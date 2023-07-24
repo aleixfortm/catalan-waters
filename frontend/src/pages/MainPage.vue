@@ -1,13 +1,16 @@
 <template>
       <background-image>
+
           <div class="main-container">
             <div class="text-container">
               <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
               <br>
-              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">Even in highly developed regions, extended periods of drought can severely deplete water resources, leading to acute scarcity and posing significant challenges to water availability.</div>
+              <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">
+                Even in highly developed regions, extended periods of drought can severely deplete water resources. 
+                During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
             </div>
-            <div class="svg-container">
-              <svg-map class="main-container__img" :class="{ 'is-loading': isLoading }"></svg-map>
+            <div class="svg-container" :class="{ 'is-loading': isLoading }">
+              <svg-map class="main-container__img"></svg-map>
             </div>
           </div>
 
@@ -19,6 +22,7 @@
 <script>
 import BackgroundImage from "../components/BackgroundImage.vue";
 import SvgMap from "../components/SvgMap.vue";
+
 
 export default {
   components: {
@@ -45,14 +49,17 @@ export default {
   mounted() {
       setTimeout(() => {
         this.isLoading = true;
-      }, 150); // Set the delay time in milliseconds
+      }, 350); // Set the delay time in milliseconds
     },
   }
 </script>
 
 
 <style>
-
+.chart {
+  height: 300px;
+  width: 1000px;
+}
 
 .pollancre {
     text-transform: uppercase;
@@ -79,10 +86,16 @@ export default {
 
 .svg-container {
   flex: 1;
+  opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px;
+  transition: all 0.8s ease-in;
+}
+
+.svg-container.is-loading {
+  opacity: 1;
 }
 
 .pollancre-secondary {
@@ -123,13 +136,19 @@ export default {
   border-radius: 15px;
   opacity: 0;
   flex: 1;
-
   padding: 20px; /* Add padding as needed */
   transition: 1s ease-in all;
 }
 
 .main-container__img.is-loading {
   opacity: 1;
+}
+
+@media (max-width: 1080px) {
+  .main-container {
+    flex-direction: column;
+    height: 75%;
+  }
 }
 
 </style>

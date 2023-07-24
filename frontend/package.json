@@ -9,8 +9,10 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "chart.js": "^4.3.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^3.2.36",
+    "vue-chartjs": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

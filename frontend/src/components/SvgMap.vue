@@ -1,5 +1,5 @@
 <template>
-   <svg @mouseover="handleMouseOver" class="responsive-svg" viewBox="0 0 420 400"
+   <svg @mouseover="handleMouseOver" @mouseout="handleMouseOut" class="responsive-svg" viewBox="0 0 420 400"
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       xmlns:cc="http://web.resource.org/cc/"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -225,36 +225,116 @@
       </g>
    </g>
    </svg>
-
+   <div v-if="showTooltip" class="tooltip" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
+      <div class="tooltip-data">
+         <b>RegionID</b>
+         <br>
+         {{ tooltipContent }}
+      </div>
+      <div class="tooltip-data">
+         <b>Water volume [%]</b>
+         <br>
+         35%
+      </div>
+      <div class="tooltip-data">
+         <b>Water volume [L]</b>
+         <br>
+         3404L
+      </div>
+      <div class="disclaimer">Actual real-time data</div>
+    </div>
 </template>
 
 <script>
 
 export default {
+   data() {
+      return {
+         showTooltip: false,
+         tooltipX: 0,
+         tooltipY: 0,
+         tooltipContent: "",
+      };
+   },
     methods: {
-        handleMouseOver(event) {
-        // Handle hover over a region
-        const regionId = event.target.getAttribute('id'); // Get the ID of the region
-        console.log(`Hovered over region with ID: ${regionId}`);
-        
-        },
+      handleMouseOver(event) {
+         // const randNum = Math.random() < 0.5 ? 1 : -1;
+
+         // Handle hover over a region
+         const regionId = event.target.getAttribute('id'); // Get the ID of the region
+         // Get the mouse coordinates
+         const mouseX = event.pageX;
+         const mouseY = event.pageY;
+
+         // Set the tooltip content based on the region
+         this.tooltipContent = regionId; // You can customize the content as needed
+
+         if (mouseX >= 1500) {
+            this.tooltipX = mouseX - 300
+         } else {
+            this.tooltipX = mouseX;
+         }
+         
+         if (mouseY >= 460) {
+            this.tooltipY = mouseY - 280
+         } else {
+            this.tooltipY = mouseY;
+         }
+
+   
+         if (regionId !== "cat-map") {
+            this.showTooltip = true;
+         }
+
+      },
+      handleMouseOut() {
+         // Hide the tooltip when the mouse moves out of the region
+         this.showTooltip = false;
+      },
     },
     mounted() {
+
       const paths = document.querySelectorAll('path');
       console.log(paths)
       // Loop through each <path> and assign a color fill
       paths.forEach((path, index) => {
+         const randNum = Math.random() < 0.5 ? 1 : 2;
+         console.log(index)
          // Assign a different color fill based on the index (you can modify this as needed)
-         const fillColor = index % 2 === 0 ? 'rgb(145, 211, 255)' : 'rgb(102, 150, 255)';
+         const fillColor = randNum === 2 ? 'rgb(145, 211, 255)' : 'rgb(102, 150, 255)';
          path.style.cssText = `fill: ${fillColor}`;
       });
-
     }
 }
 
 </script>
 
 <style scoped>
+.disclaimer {
+   font-size: 12px;
+   color: #00000077;
+   margin: 100px 0 0 0;
+   text-align: start;
+   margin-top: -8px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: #fff;
+  padding: 10px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: start;
+  z-index: 9999; /* Ensure the tooltip appears above the SVG */
+  color: black;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.507)
+}
+
+.tooltip-data {
+   margin-bottom: 15px;
+}
+
 .legend-container {
    height: 100px;
    width: 20px;
@@ -264,7 +344,7 @@ export default {
 .responsive-svg {
    transform: scale(1);
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 path {
@@ -272,7 +352,7 @@ path {
 }
 
 path:hover {
-    fill: rgba(255, 255, 255, 0.918) !important;
+    fill: rgb(97, 255, 189) !important;
     stroke: rgb(0, 0, 0) !important;
     stroke-width: 0.1%;
     cursor: pointer;

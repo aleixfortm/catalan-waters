@@ -220,49 +220,55 @@
 
 export default {
    data() {
-      return {
-         showTooltip: false,
-         tooltipX: 0,
-         tooltipY: 0,
-         region: "",
-         percentage: 0,
-         volume: 0
-      };
-   },
-    methods: {
-      handleMouseMove(event) {
-         // Get the mouse coordinates on mouse move
-         const mouseX = event.pageX;
-         const mouseY = event.pageY;
+    return {
+      showTooltip: false,
+      tooltipX: 0,
+      tooltipY: 0,
+      region: "",
+      percentage: 0,
+      volume: 0,
+      // Rest of the data properties...
+    };
+  },
+  methods: {
+    handleMouseOver(event) {
+      // Handle hover over a region
+      const regionId = event.target.getAttribute("id"); // Get the ID of the region
+      const regionBounds = event.target.getBoundingClientRect(); // Get the bounding box of the region
+      const svgBounds = event.target.closest("svg").getBoundingClientRect(); // Get the bounding box of the SVG
 
-         // Update the tooltip position based on the mouse coordinates
-         this.tooltipX = mouseX;
-         this.tooltipY = mouseY + 50;
-      },
-      handleMouseOver(event) {
+      // Calculate the center position of the SVG region
+      const centerY = (regionBounds.top - svgBounds.top) + regionBounds.height / 2;
 
-         // Handle hover over a region
-         const regionId = event.target.getAttribute('id'); // Get the ID of the region
+      // Set the tooltip content based on the region
+      this.region = regionId;
+      var randomDecimal = Math.random();
+      var randomValue = randomDecimal * 80;
+      this.percentage = Math.floor(randomValue);
+      randomDecimal = Math.random();
+      randomValue = randomDecimal * 10000;
+      this.volume = Math.floor(randomValue);
 
-         // Set the tooltip content based on the region
-         this.region = regionId;
-         var randomDecimal = Math.random();
-         var randomValue = randomDecimal * 80;
-         this.percentage = Math.floor(randomValue);
-         randomDecimal = Math.random();
-         randomValue = randomDecimal * 10000;
-         this.volume = Math.floor(randomValue);
-   
-         if (regionId !== "cat-map") {
-            this.showTooltip = true;
-         }
+      const mouseY = event.pageY;
 
-      },
-      handleMouseOut() {
-         // Hide the tooltip when the mouse moves out of the region
-         this.showTooltip = false;
-      },
+      // Set the tooltip position to the center of the SVG region
+      this.tooltipX = event.pageX;
+      if (mouseY > centerY + 40) {
+         this.tooltipY = mouseY + 30;
+      } else {
+         this.tooltipY = centerY + 50;
+      }
+
+
+      if (regionId !== "cat-map") {
+        this.showTooltip = true;
+      }
     },
+    handleMouseOut() {
+      // Hide the tooltip when the mouse moves out of the region
+      this.showTooltip = false;
+    },
+  },
     mounted() {
 
       const paths = document.querySelectorAll('path');

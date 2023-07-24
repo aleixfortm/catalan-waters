@@ -1,9 +1,10 @@
 <template>
-
+  <div class="main-container">
+    <div class="pollancre">POLLANCRE AAHHAHAH</div>
     <div class="svg-container" :class="{ 'is-loading': isLoading }">
       <svg-map></svg-map>
     </div>
-
+  </div>
 </template>
 
 
@@ -30,11 +31,6 @@ export default {
 
 
 <style>
-.chart {
-  height: 300px;
-  width: 1000px;
-}
-
 .pollancre {
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.863);

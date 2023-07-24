@@ -278,13 +278,13 @@ export default {
          this.volume = Math.floor(randomValue);
 
          if (mouseX >= 1500) {
-            this.tooltipX = mouseX - 300
+            this.tooltipX = mouseX
          } else {
             this.tooltipX = mouseX;
          }
          
          if (mouseY >= 460) {
-            this.tooltipY = mouseY - 280
+            this.tooltipY = mouseY
          } else {
             this.tooltipY = mouseY;
          }

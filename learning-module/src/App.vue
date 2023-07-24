@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="project-title">PROJECT 1</div>
+  <div class="project-desc">Create a component that shows the name of 3 friends. The names cannot be written in the HTML code, and must be passed from the script section to the template section.
+  Hints: variables that are sharable across the component are written within the "data" section of the script. Variables in the template are written inside double curly braces.</div><br>
+  <div class="project-title">PROJECT 2</div><br>
+
+  <div class="project-title">PROJECT 3</div><br>
+
+  <div class="project-title">PROJECT 4</div><br>
+
+  <div class="project-title">PROJECT 5</div><br>
+
+  <div class="project-title">PROJECT 6</div><br>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  font-family:'Gill Sans', Calibri;
+}
+
+.project-title {
+  margin: auto;
+  font-size: 30px;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.project-desc {
+  width: 1080px;
+  font-size: 18px;
+  margin: auto;
+  text-align: center;
+  text-justify: center;
 }
 </style>

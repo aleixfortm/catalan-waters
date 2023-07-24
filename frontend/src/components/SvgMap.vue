@@ -356,15 +356,13 @@ export default {
 }
 
 path {
-   stroke-width: 0.5;
-   stroke: rgba(5, 5, 5, 0.281);
    transition: 0.1s all;
 }
 
 path:hover {
     fill: rgb(97, 255, 189) !important;
-
-
+    stroke: rgb(0, 0, 0) !important;
+    stroke-width: 0.1%;
     cursor: pointer;
 }
 

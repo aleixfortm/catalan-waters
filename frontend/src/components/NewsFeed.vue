@@ -1,30 +1,53 @@
 <template>
-   <ul>
-        <li class="card">
+   <div class="card-container">
+        <div class="card">
             <div class="card-title">Sau reservoir</div>
             <img src="../assets/sau.jpg" alt="Image 1">
-        </li>
-        <li class="card">
+        </div>
+        <div class="card">
             <div class="card-title">Llosa del cavall</div>
             <img src="../assets/llosa-del-cavall.jpg" alt="Image 2">
-        </li>
-        <li class="card">
+        </div>
+        <div class="card">
             <div class="card-title">Sant Ponç</div>
             <img src="../assets/sant-ponç.jpg" alt="Image 3">
-        </li>
-        <li class="card">
+        </div>
+        <div class="card">
             <div class="card-title">Foix</div>
             <img src="../assets/foix.jpg" alt="Image 4">
-        </li>
-    </ul>
+        </div>
+    </div>
 </template>
 
 <style scoped>
 
+.card-container {
+    align-items: center;
+    justify-content: center;
+    width: 1080px;
+    display: grid;
+    margin: 60px auto 20px auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 200px;
+    padding: 0;
+}
+
+@media (max-width: 800px) {
+    .card-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 500px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
 .card {
     width: 350px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 30px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -44,10 +67,12 @@
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 230px;
+    object-fit: cover; 
     display: block;
     border-radius: 0 0 5px 5px;
 }
+
 .card-inner:hover {
     box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
 }

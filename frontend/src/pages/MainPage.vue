@@ -1,10 +1,11 @@
 <template>
       <div class="main-title" :class="{ 'is-loading': isLoading }">catalan waters</div>
       <div class="subtitle" :class="{ 'is-loading': isLoading }">Explore real-time data from the catalan water reservoirs</div>
-      <news-feed></news-feed>
+
       <div class="svg-container" :class="{ 'is-loading': isLoading }">
         <svg-map class="main-container__img"></svg-map>
       </div>
+      <news-feed></news-feed>
       <div class="chart"><canvas id="volumes"></canvas></div>
 </template>
 

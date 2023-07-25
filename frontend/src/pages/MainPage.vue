@@ -1,26 +1,24 @@
 <template>
-    <div class="main-container">
-      <div class="text-container">
-        <div class="pollancre" :class="{ 'is-loading': isLoading }">EVOLUTION OF CATALAN WATER LEVELS</div>
-        <br>
-        <div class="pollancre-secondary" :class="{ 'is-loading': isLoading }">
-          Even in highly developed regions, extended periods of drought can severely deplete water resources. 
-          During these periods, it is crucial for the population to be extremely mindful and avoid wasting water.</div>
-      </div>
+      <div class="main-title" :class="{ 'is-loading': isLoading }">catalan waters</div>
+      <div class="subtitle" :class="{ 'is-loading': isLoading }">Explore real-time data from the catalan water reservoirs</div>
+
       <div class="svg-container" :class="{ 'is-loading': isLoading }">
         <svg-map class="main-container__img"></svg-map>
       </div>
-    </div>
+      <news-feed></news-feed>
+      <div class="chart"><canvas id="volumes"></canvas></div>
 </template>
 
 
 <script>
 import SvgMap from "../components/SvgMap.vue";
-
+import Chart from 'chart.js/auto';
+import NewsFeed from "@/components/NewsFeed.vue";
 
 export default {
   components: {
-    SvgMap
+    SvgMap,
+    NewsFeed
   },
   data() {
     return {
@@ -31,45 +29,111 @@ export default {
       setTimeout(() => {
         this.isLoading = true;
       }, 350); // Set the delay time in milliseconds
+
+
+(async function() {
+  const data = [
+
+    { year: 2001, count: 72 },
+
+    { year: 2003, count: 82 },
+
+    { year: 2005, count: 83 },
+
+    { year: 2007, count: 90 },
+
+    { year: 2009, count: 81 },
+
+    { year: 2011, count: 83 },
+
+    { year: 2013, count: 70 },
+
+    { year: 2015, count: 65 },
+
+    { year: 2017, count: 63 },
+
+    { year: 2019, count: 80 },
+
+    { year: 2021, count: 72 },
+
+    { year: 2023, count: 49 },
+  ];
+
+  new Chart(
+    document.getElementById('volumes'),
+    {
+      type: 'line',
+      data: {
+        labels: data.map(row => row.year),
+        datasets: [
+          {
+            label: 'Total reservoir water volume (%)',
+            data: data.map(row => row.count)
+          }
+        ]
+      }
+    }
+  );
+})();
     },
   }
 </script>
 
 
-<style>
-.pollancre {
+<style scoped>
+
+#volumes {
+  padding: 10px;
+  margin: 50px 0 0 0;
+}
+
+.main-title {
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.863);
-    letter-spacing: 0.225rem;
-    font-size: 20px;
+    letter-spacing: 8px;
+    font-size: 30px;
     line-height: 1.5;
     font-weight: 300;
-    opacity: 0;
-    margin-top: 30px;
+    opacity: 1;
+    font-weight: bold;
+    margin: 0 auto;
+    align-self: center;
+    width: fit-content;
+    text-align: center;
     transition: opacity 0.4s ease-in-out 0s, visibility 1.5s 0s, margin-top ease-in 1s;
+    padding: 10px 0 0 0;
+    border-radius: 5px;
 }
 
-.pollancre.is-loading {
+.subtitle {
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.466);
+  letter-spacing: 3px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 300;
   opacity: 1;
-  margin-top: 0px;
-}
-
-.text-container {
-  flex: 1;
-
+  margin: auto;
+  align-self: center;
+  width: fit-content;
+  text-align: center;
+  transition: opacity 0.4s ease-in-out 0s, visibility 1.5s 0s, margin-top ease-in 1s;
   padding: 10px;
+
+  border-radius: 5px;
 }
+
 
 .svg-container {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 5px auto;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  width: 50%;
+  width: 45%;
   transition: all 0.8s ease-in;
 }
 
@@ -77,42 +141,9 @@ export default {
   opacity: 1;
 }
 
-.pollancre-secondary {
-    color: rgba(255, 255, 255, 0.527);
-    letter-spacing: 0.225rem;
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 300;
-    opacity: 0;
-    transition: 1.2s ease-in-out all;
-}
-
-.pollancre-secondary.is-loading {
-  opacity: 1;
-}
-
-.main-container {
-  text-align: center; 
-  color: #ffffff;
-  margin: auto;
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.text {
-  flex: 1;
-  padding: 20px;
-}
-
 .main-container__img {
-  max-width: 100%;
-  max-height: 100%;
   border-radius: 15px;
   opacity: 0;
-  flex: 1;
-  padding: 20px; /* Add padding as needed */
   transition: 1s ease-in all;
 }
 
@@ -120,11 +151,5 @@ export default {
   opacity: 1;
 }
 
-@media (max-width: 1080px) {
-  .main-container {
-    flex-direction: column;
-    height: 75%;
-  }
-}
 
 </style>

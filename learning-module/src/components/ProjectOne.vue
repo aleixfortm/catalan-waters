@@ -19,6 +19,9 @@
             makeItVisible() {
                 var ranNum = Math.random() < 0.5 ? true : false;
                 this.visible1 = ranNum;
+                if (this.visible1 === true) {
+                    this.friendOne = "Carles";
+                }
                 ranNum = Math.random() < 0.5 ? true : false;
                 this.visible2 = ranNum;
                 ranNum = Math.random() < 0.5 ? true : false;

@@ -9,6 +9,7 @@
   <div class="project-desc">Create two buttons. One will be the "Add" button, and the other will be a "remove" button. Create a div where a number zero is shown. Every time that 
     the user clicks the "add" button, increase the the displayed number be 1, and decrease by one if "remove" is clicked.
   </div>
+  <project-two></project-two>
   <div class="project-title">PROJECT 3</div><br>
 
   <div class="project-title">PROJECT 4</div><br>
@@ -21,10 +22,12 @@
 
 <script>
 import ProjectOne from "./components/ProjectOne.vue";
+import ProjectTwo from "./components/ProjectTwo.vue";
 
 export default {
   components: {
-    ProjectOne
+    ProjectOne,
+    ProjectTwo
   }
 }
 

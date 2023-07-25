@@ -6,9 +6,14 @@
   <div class="project-desc">Create a component variable that is set to false or true. Make one of your friends render depending on the value of that variable. Hint: use v-if</div>
   <br>
   <div class="project-title">PROJECT 2</div><br>
-
+  <div class="project-desc">Create two buttons. One will be the "Add" button, and the other will be a "remove" button. Create a div where a number zero is shown. Every time that 
+    the user clicks the "add" button, increase the the displayed number be 1, and decrease by one if "remove" is clicked.
+  </div>
+  <project-two></project-two>
   <div class="project-title">PROJECT 3</div><br>
-
+  <div class="project-desc">Create a div that contains a name passed from the script that changes colour when hovered.
+  </div>
+  <project-three></project-three>
   <div class="project-title">PROJECT 4</div><br>
 
   <div class="project-title">PROJECT 5</div><br>
@@ -19,10 +24,14 @@
 
 <script>
 import ProjectOne from "./components/ProjectOne.vue";
+import ProjectTwo from "./components/ProjectTwo.vue";
+import ProjectThree from "./components/ProjectThree.vue";
 
 export default {
   components: {
-    ProjectOne
+    ProjectOne,
+    ProjectTwo,
+    ProjectThree
   }
 }
 

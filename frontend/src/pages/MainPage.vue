@@ -127,13 +127,13 @@ export default {
 .svg-container {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 5px auto;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  width: 50%;
+  width: 45%;
   transition: all 0.8s ease-in;
 }
 

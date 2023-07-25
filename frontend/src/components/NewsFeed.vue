@@ -24,11 +24,11 @@
 .card-container {
     align-items: center;
     justify-content: center;
-    width: 1080px;
+    width: 1600px;
     display: grid;
-    margin: 60px auto 20px auto;
+    margin: 20px auto 0 auto;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 200px;
+    grid-gap: 100px;
     padding: 0;
 }
 
@@ -50,18 +50,14 @@
     margin: 30px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.01); /* Increase the scale on hover to create the pop-up effect */
+    padding: 2px;
 }
 
 .card-title {
     font-weight: bold;
     text-align: center;
-    padding: 10px;
-    background-color: #fff;
+    padding: 8px;
+    background-color: #ffffff;
     border-radius: 5px 5px 0 0;
 }
 
@@ -70,11 +66,7 @@
     height: 230px;
     object-fit: cover; 
     display: block;
-    border-radius: 0 0 5px 5px;
-}
-
-.card-inner:hover {
-    box-shadow: 0px 0px 15px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 ul {
@@ -86,12 +78,7 @@ ul {
     justify-content: center;
     margin: 60px auto 20px auto;
 }
-.card {
-    height: fit-content;
-    margin: 0 0 10px 0;
-    padding: 0 20px 20px 20px;
-    list-style: none;
-}
+
 @media screen and (max-width: 480px) {
     .card {
         width: 100%;

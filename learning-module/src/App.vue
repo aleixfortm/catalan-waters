@@ -11,7 +11,9 @@
   </div>
   <project-two></project-two>
   <div class="project-title">PROJECT 3</div><br>
-
+  <div class="project-desc">Create a div that contains a name passed from the script that changes colour when hovered.
+  </div>
+  <project-three></project-three>
   <div class="project-title">PROJECT 4</div><br>
 
   <div class="project-title">PROJECT 5</div><br>
@@ -23,11 +25,13 @@
 <script>
 import ProjectOne from "./components/ProjectOne.vue";
 import ProjectTwo from "./components/ProjectTwo.vue";
+import ProjectThree from "./components/ProjectThree.vue";
 
 export default {
   components: {
     ProjectOne,
-    ProjectTwo
+    ProjectTwo,
+    ProjectThree
   }
 }
 

@@ -26,6 +26,7 @@
       inkscape:label="Capa 1"
       inkscape:groupmode="layer"
       id="layer1">
+      
       <g
          id="g7500"
          style="fill:#e6e6e6;stroke:rgb(0, 0, 0);stroke-opacity:1.0;stroke-width:0.1;opacity:1">

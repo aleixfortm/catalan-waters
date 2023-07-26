@@ -1,10 +1,12 @@
 <template>
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+
     <main-page></main-page>
 </template>
 
 <script>
 import MainPage from "./pages/MainPage.vue"
-
+import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
 export default {
   components: {
     MainPage

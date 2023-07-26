@@ -20,13 +20,13 @@
       </v-tabs>
       <v-window v-model="tab">
         <v-window-item
-          v-for="n in 3"
+          v-for="n in 5"
           :key="n"
           :value="n"
         >
-          <v-container fluid class="color">
+          <v-container fluid>
             <v-row>
-                <slot></slot>
+                <reservoir-carousel :selectedTab="tabs[n - 1]"></reservoir-carousel>
             </v-row>
           </v-container>
         </v-window-item>
@@ -35,10 +35,18 @@
   </template>
   
   <script>
+    import ReservoirCarousel from './ReservoirCarousel.vue';
+
     export default {
-      data: () => ({
-        tab: null,
-      }),
+      components: {
+        ReservoirCarousel
+      },
+      data() {
+        return {
+          tab: null,
+          tabs: ["All", "Barcelona", "Girona", "Lleida", "Tarragona"]
+        }
+      }
     }
   </script>
 

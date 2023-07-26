@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col
-        v-for="(reservoir, index) in data"
+        v-for="(reservoir, index) in filteredData"
         :key="index"
         cols="12"
         sm="6"
@@ -26,6 +26,7 @@ export default {
   components: {
     ReservoirCard
   },
+  props: ["selectedTab"],
   data() {
     return {
       data: [
@@ -70,6 +71,15 @@ export default {
           province: "Girona"
         }
       ]
+    }
+  },
+  computed: {
+    filteredData() {
+      if (!this.selectedTab || this.selectedTab === "All") {
+        return this.data;
+      } else {
+        return this.data.filter(reservoir => reservoir.province === this.selectedTab);
+      }
     }
   }
 }

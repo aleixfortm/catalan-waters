@@ -5,7 +5,8 @@
       <div class="svg-container" :class="{ 'is-loading': isLoading }">
         <svg-map class="main-container__img"></svg-map>
       </div>
-      <ReservoirCarousel></ReservoirCarousel>
+      <background-holder></background-holder>
+
       <div class="chart"><canvas id="volumes"></canvas></div>
 </template>
 
@@ -13,12 +14,12 @@
 <script>
 import SvgMap from "../components/SvgMap.vue";
 import Chart from 'chart.js/auto';
-import ReservoirCarousel from "@/components/ReservoirCarousel.vue";
+import BackgroundHolder from "@/components/BackgroundHolder.vue";
 
 export default {
   components: {
     SvgMap,
-    ReservoirCarousel
+    BackgroundHolder
   },
   data() {
     return {

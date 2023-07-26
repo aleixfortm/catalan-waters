@@ -1,69 +1,90 @@
 <template>
-    <v-card
-      class="mx-auto"
-      max-width="400"
-    >
-      <v-img
-        class="align-end text-white"
-        height="200"
-        :src="require('@/assets/riudecanyes.png')"
-        cover
+  <v-container>
+    <v-row>
+      <v-col
+        v-for="(reservoir, index) in filteredData"
+        :key="index"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
       >
-        <v-card-title>Top 10 Australian beaches</v-card-title>
-      </v-img>
-  
-      <v-card-subtitle class="pt-4">
-        Number 10
-      </v-card-subtitle>
-  
-      <v-card-text>
-        <div>Whitehaven Beach</div>
-  
-        <div>Whitsunday Island, Whitsunday Islands</div>
-      </v-card-text>
-  
-      <v-card-actions>
-        <v-btn color="orange">
-          Share
-        </v-btn>
-  
-        <v-btn color="orange">
-          Explore
-        </v-btn>
-      </v-card-actions>
-    </v-card>
+      <reservoir-card
+        :reservoirName="reservoir.name"
+        :reservoirPicture="reservoir.picture"
+        :reservoirProvince="reservoir.province">
+      </reservoir-card>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
 
-    <v-card
-      class="mx-auto"
-      max-width="400"
-    >
-      <v-img
-        class="align-end text-white"
-        height="200"
-        :src="require('@/assets/llosa-del-cavall.jpg')"
-        cover
-      >
-        <v-card-title>Top 10 Australian beaches</v-card-title>
-      </v-img>
-  
-      <v-card-subtitle class="pt-4">
-        Number 10
-      </v-card-subtitle>
-  
-      <v-card-text>
-        <div>Whitehaven Beach</div>
-  
-        <div>Whitsunday Island, Whitsunday Islands</div>
-      </v-card-text>
-  
-      <v-card-actions>
-        <v-btn color="orange">
-          Share
-        </v-btn>
-  
-        <v-btn color="orange">
-          Explore
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </template>
+<script>
+import ReservoirCard from './ReservoirCard.vue';
+
+export default {
+  components: {
+    ReservoirCard
+  },
+  props: ["selectedTab"],
+  data() {
+    return {
+      data: [
+        {
+          name: "Riudecanyes",
+          picture: "riudecanyes.png",
+          province: "Girona"
+        },
+        {
+          name: "Llosa del Cavall",
+          picture: "llosa-del-cavall.jpg",
+          province: "Barcelona"
+        },
+        {
+          name: "Baells",
+          picture: "baells3.jpg",
+          province: "Girona"
+        },
+        {
+          name: "Boadella",
+          picture: "boadella.jpg",
+          province: "Lleida"
+        },
+        {
+          name: "Foix",
+          picture: "foix.jpg",
+          province: "Lleida"
+        },
+        {
+          name: "Sau",
+          picture: "sau2.jpg",
+          province: "Lleida"
+        },
+        {
+          name: "Siurana",
+          picture: "siurana.jpg",
+          province: "Tarragona"
+        },
+        {
+          name: "Susqueda (Girona)",
+          picture: "susqueda(girona).jpeg",
+          province: "Girona"
+        }
+      ]
+    }
+  },
+  computed: {
+    filteredData() {
+      if (!this.selectedTab || this.selectedTab === "All") {
+        return this.data;
+      } else {
+        return this.data.filter(reservoir => reservoir.province === this.selectedTab);
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

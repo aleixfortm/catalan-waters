@@ -1,11 +1,11 @@
 <template>
       <div class="main-title" :class="{ 'is-loading': isLoading }">catalan waters</div>
       <div class="subtitle" :class="{ 'is-loading': isLoading }">Explore real-time data from the catalan water reservoirs</div>
-
+      
       <div class="svg-container" :class="{ 'is-loading': isLoading }">
         <svg-map class="main-container__img"></svg-map>
       </div>
-      <news-feed></news-feed>
+      <ReservoirCarousel></ReservoirCarousel>
       <div class="chart"><canvas id="volumes"></canvas></div>
 </template>
 
@@ -13,12 +13,12 @@
 <script>
 import SvgMap from "../components/SvgMap.vue";
 import Chart from 'chart.js/auto';
-import NewsFeed from "@/components/NewsFeed.vue";
+import ReservoirCarousel from "@/components/ReservoirCarousel.vue";
 
 export default {
   components: {
     SvgMap,
-    NewsFeed
+    ReservoirCarousel
   },
   data() {
     return {

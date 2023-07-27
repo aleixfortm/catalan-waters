@@ -13,7 +13,7 @@
       </div>
   
       <div class="pt-0">
-        This is a hobby project made by a team of 3 ambitious students. All data has been acquired from official sources of <span>gencat.cat</span>. We warmly welcome feedback or any other questions, do not hesitate to reach out to us through our social media above.
+        This is a hobby project made by a team of 3 ambitious students. All data has been acquired from official sources at <span>gencat.cat</span>. We warmly welcome feedback or any other questions, do not hesitate to reach out to us through ourno social media above.
       </div>
   
       <v-divider></v-divider>

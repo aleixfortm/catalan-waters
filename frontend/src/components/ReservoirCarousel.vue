@@ -10,6 +10,8 @@
         lg="3"
       >
       <reservoir-card
+
+        :elevation="isHovering ? 24 : 6"
         :reservoirName="reservoir.name"
         :reservoirPicture="reservoir.picture"
         :reservoirProvince="reservoir.province">
@@ -29,6 +31,7 @@ export default {
   props: ["selectedTab"],
   data() {
     return {
+      isHovering: false,
       data: [
         {
           name: "Riudecanyes",
@@ -71,6 +74,14 @@ export default {
           province: "Girona"
         }
       ]
+    }
+  },
+  methods: {
+    handleMouseOver() {
+      this.isHovering = true;
+    },
+    handleMouseOut() {
+      this.isHovering = false;
     }
   },
   computed: {

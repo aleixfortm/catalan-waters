@@ -1,21 +1,33 @@
 <template>
+
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
 
-    <main-page></main-page>
+    <v-app style="background-color: transparent;">
+      <v-img src="./assets/background1.jpg">
+
+
+        <main-page></main-page>
+        <page-footer></page-footer>
+      </v-img>
+    </v-app>
+
 </template>
 
 <script>
 import MainPage from "./pages/MainPage.vue"
+import PageFooter from "./components/PageFooter.vue";
 import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+
 export default {
   components: {
-    MainPage
+    MainPage,
+    PageFooter
   }
 }
 </script>
 
 <style>
-html {
+html, body, app {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
@@ -28,4 +40,7 @@ html {
   background-attachment: fixed, fixed;
 }
 
+v-img {
+  background-color: transparent;
+}
 </style>

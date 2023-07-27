@@ -6,14 +6,14 @@
         <svg-map class="main-container__img"></svg-map>
       </div>
       <background-holder></background-holder>
-
+      <!--
       <div class="chart"><canvas id="volumes"></canvas></div>
+      -->
 </template>
 
 
 <script>
 import SvgMap from "../components/SvgMap.vue";
-import Chart from 'chart.js/auto';
 import BackgroundHolder from "@/components/BackgroundHolder.vue";
 
 export default {
@@ -30,54 +30,8 @@ export default {
       setTimeout(() => {
         this.isLoading = true;
       }, 350); // Set the delay time in milliseconds
-
-
-(async function() {
-  const data = [
-
-    { year: 2001, count: 72 },
-
-    { year: 2003, count: 82 },
-
-    { year: 2005, count: 83 },
-
-    { year: 2007, count: 90 },
-
-    { year: 2009, count: 81 },
-
-    { year: 2011, count: 83 },
-
-    { year: 2013, count: 70 },
-
-    { year: 2015, count: 65 },
-
-    { year: 2017, count: 63 },
-
-    { year: 2019, count: 80 },
-
-    { year: 2021, count: 72 },
-
-    { year: 2023, count: 49 },
-  ];
-
-  new Chart(
-    document.getElementById('volumes'),
-    {
-      type: 'line',
-      data: {
-        labels: data.map(row => row.year),
-        datasets: [
-          {
-            label: 'Total reservoir water volume (%)',
-            data: data.map(row => row.count)
-          }
-        ]
-      }
     }
-  );
-})();
-    },
-  }
+}
 </script>
 
 
@@ -90,7 +44,7 @@ export default {
 
 .main-title {
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.863);
+    color: #003253;
     letter-spacing: 8px;
     font-size: 30px;
     line-height: 1.5;
@@ -104,6 +58,7 @@ export default {
     transition: opacity 0.4s ease-in-out 0s, visibility 1.5s 0s, margin-top ease-in 1s;
     padding: 10px 0 0 0;
     border-radius: 5px;
+    color: rgba(255, 255, 255, 0.863);
 }
 
 .subtitle {
@@ -151,6 +106,5 @@ export default {
 .main-container__img.is-loading {
   opacity: 1;
 }
-
 
 </style>

@@ -223,6 +223,24 @@ export default {
     };
   },
   methods: {
+   handleMouseOver() {
+      const regionId = event.target.getAttribute("id"); // Get the ID of the region
+      this.region = regionId;
+      var randomDecimal = Math.random();
+      var randomValue = randomDecimal * 80;
+      this.percentage = Math.floor(randomValue);
+      if (regionId !== "cat-map") {
+         this.showTooltip = true;
+      }
+   },
+    handleMouseOut() {
+      this.showTooltip = false;
+   },
+   handleMouseMove(event) {
+      this.tooltipX = event.pageX;
+      this.tooltipY = event.pageY - 25;
+   }
+   /*
     handleMouseOver(event) {
       // Handle hover over a region
       const regionId = event.target.getAttribute("id"); // Get the ID of the region
@@ -246,6 +264,7 @@ export default {
       // Hide the tooltip when the mouse moves out of the region
       this.showTooltip = false;
     },
+    */
   },
     mounted() {
 
@@ -263,39 +282,37 @@ export default {
 </script>
 
 <style scoped>
+
+.tooltip {
+  position: absolute;
+  transform: translateY(-100%) translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.88);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: start;
+  z-index: 10;
+  color: black;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.88);
+}
+
 .disclaimer {
    font-size: 12px;
    color: #00000077;
    margin: 100px 0 0 0;
    text-align: start;
    margin-top: 0px;
-}
-
-.tooltip {
-  position: absolute;
-  transform: translateX(-50%);
-  background-color: #fff;
-  padding: 10px;
-  border: 0px solid #ccc;
-  border-radius: 5px;
-  font-size: 18px;
-  text-align: start;
-  z-index: 9999; /* Ensure the tooltip appears above the SVG */
-  color: black;
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.507);
-}
-
-.tooltip::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  margin-left: -10px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid white;
 }
 
 .tooltip-data {

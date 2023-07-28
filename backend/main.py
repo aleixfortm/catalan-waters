@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from config import SQLALCHEMYURI
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ print('Flask app created!')
 
 # Connection
 print('checking database')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:pollancre@localhost/stats1'
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMYURI
 print('succeed!')
 db = SQLAlchemy(app)
 

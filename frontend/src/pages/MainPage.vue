@@ -2,8 +2,10 @@
       <div class="main-title" :class="{ 'is-loading': isLoading }">catalan waters</div>
       <div class="subtitle" :class="{ 'is-loading': isLoading }">Explore real-time data from the catalan water reservoirs</div>
       
-      <div class="svg-container" :class="{ 'is-loading': isLoading }">
-        <svg-map class="main-container__img"></svg-map>
+      <div class="map-stats-container">
+        <div class="svg-container" :class="{ 'is-loading': isLoading }">
+          <svg-map class="main-container__img"></svg-map>
+        </div>
       </div>
       <background-holder></background-holder>
       <!--
@@ -36,6 +38,13 @@ export default {
 
 
 <style scoped>
+
+.map-stats-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
 
 #volumes {
   padding: 10px;

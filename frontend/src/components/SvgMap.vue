@@ -199,19 +199,12 @@
    </svg>
    <div class="tooltip" v-if="showTooltip" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
       <div class="tooltip-data">
-         <b>RegionID</b>
-         <br>
+         <div class="tooltip-data-value"><b>RegionID</b></div>
          {{ region }}
       </div>
       <div class="tooltip-data">
-         <b>Water volume [%]</b>
-         <br>
+         <div class="tooltip-data-value"><b>Water volume (%)</b></div>
          {{ percentage }}%
-      </div>
-      <div class="tooltip-data">
-         <b>Water volume [L]</b>
-         <br>
-         {{ volume }}L
       </div>
       <div class="disclaimer">Actual real-time data</div>
     </div>
@@ -226,38 +219,41 @@ export default {
       tooltipX: 0,
       tooltipY: 0,
       region: "",
-      percentage: 0,
-      volume: 0,
+      percentage: 0
     };
   },
   methods: {
+   handleMouseOver() {
+      const regionId = event.target.getAttribute("id"); // Get the ID of the region
+      this.region = regionId;
+      var randomDecimal = Math.random();
+      var randomValue = randomDecimal * 80;
+      this.percentage = Math.floor(randomValue);
+      if (regionId !== "cat-map") {
+         this.showTooltip = true;
+      }
+   },
+    handleMouseOut() {
+      this.showTooltip = false;
+   },
+   handleMouseMove(event) {
+      this.tooltipX = event.pageX;
+      this.tooltipY = event.pageY - 25;
+   }
+   /*
     handleMouseOver(event) {
       // Handle hover over a region
       const regionId = event.target.getAttribute("id"); // Get the ID of the region
-      const regionBounds = event.target.getBoundingClientRect(); // Get the bounding box of the region
-      const svgBounds = event.target.closest("svg").getBoundingClientRect(); // Get the bounding box of the SVG
-
-      // Calculate the center position of the SVG region
-      const centerY = (regionBounds.top - svgBounds.top) + regionBounds.height / 2;
 
       // Set the tooltip content based on the region
       this.region = regionId;
       var randomDecimal = Math.random();
       var randomValue = randomDecimal * 80;
       this.percentage = Math.floor(randomValue);
-      randomDecimal = Math.random();
-      randomValue = randomDecimal * 10000;
-      this.volume = Math.floor(randomValue);
 
       const mouseY = event.pageY;
-
-      // Set the tooltip position to the center of the SVG region
+      this.tooltipY = mouseY + 30;
       this.tooltipX = event.pageX;
-      if (mouseY > centerY + 40) {
-         this.tooltipY = mouseY + 30;
-      } else {
-         this.tooltipY = centerY + 50;
-      }
 
 
       if (regionId !== "cat-map") {
@@ -268,6 +264,7 @@ export default {
       // Hide the tooltip when the mouse moves out of the region
       this.showTooltip = false;
     },
+    */
   },
     mounted() {
 
@@ -285,49 +282,45 @@ export default {
 </script>
 
 <style scoped>
+
+.tooltip {
+  position: absolute;
+  transform: translateY(-100%) translateX(-50%);
+  background-color: rgba(255, 255, 255, 0.88);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: start;
+  z-index: 10;
+  color: black;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.15);
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.88);
+}
+
 .disclaimer {
    font-size: 12px;
    color: #00000077;
    margin: 100px 0 0 0;
    text-align: start;
-   margin-top: -8px;
-}
-
-.tooltip {
-  position: absolute;
-  transform: translateX(-50%);
-  background-color: #fff;
-  padding: 10px;
-  border: 0px solid #ccc;
-  border-radius: 5px;
-  font-size: 18px;
-  text-align: start;
-  z-index: 9999; /* Ensure the tooltip appears above the SVG */
-  color: black;
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.507);
-}
-
-.tooltip::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  margin-left: -10px;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid white;
+   margin-top: 0px;
 }
 
 .tooltip-data {
-   margin-bottom: 15px;
+   margin-bottom: 5px;
 }
 
-.legend-container {
-   height: 100px;
-   width: 20px;
-   background-color: red;
+.tooltip-data-value {
+   margin-bottom: -2px;
 }
 
 .responsive-svg {

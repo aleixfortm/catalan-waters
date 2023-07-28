@@ -4,3 +4,11 @@
 
 ###  **<p align="center">Catalan waters</p>**
 <p align="center"><strong>Graphical visualisation of real-time water levels throughout Catalonia</strong>
+
+###  **<p align="center">![Shields](https://img.shields.io/badge/Status-Under_development-orange)</p>**
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=vue,js,postgres,python,flask" />
+  </a>
+</p>

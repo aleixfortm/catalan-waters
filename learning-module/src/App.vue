@@ -4,14 +4,6 @@
   Hints: variables that are sharable across the component are written within the "data" section of the script. Variables in the template are written inside double curly braces.</div><br>
   <div class="project-title">PROJECT 2</div><br>
 
-  <div class="project-title">PROJECT 3</div><br>
-
-  <div class="project-title">PROJECT 4</div><br>
-
-  <div class="project-title">PROJECT 5</div><br>
-
-  <div class="project-title">PROJECT 6</div><br>
-
 </template>
 
 <script>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
@@ -28,12 +28,33 @@ class Data(db.Model):
 
 @app.route('/')
 def root_view():
-    return '<a href="/data"><button> Go to data </button></a>'
+    return render_template('main.html')
 
 @app.route('/data')
 def data_view():
     data = Data.query.all()
     return render_template('data.html', data = data)
+
+@app.route('/api/data')
+def api_data():
+    data = Data.query.all()
+
+    # Convert SQLAlchemy instances to dictionaries
+    data_list = []
+    for item in data:
+        data_dict = {
+            'id': item.id,
+            'day': item.day,
+            'station': item.station,
+            'absolut_volume': item.absolut_volume,
+            'stored_volume_pct': item.stored_volume_pct,
+            'stored_volume_hm3': item.stored_volume_hm3
+        }
+        data_list.append(data_dict)
+
+    # Return the data list as JSON
+    return jsonify(data_list)
+
 
 
 ######## CROS ORIGIN RESOURCE SHARING #########

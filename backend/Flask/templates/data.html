@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data List</title>
+</head>
+<body>
+    <h1>Data List</h1>
+    <ul>
+        {% for row in data %}
+            <li>{{ row.dia }} -- {{ row.station }} -- {{ row.absolut_volume }} -- {{ row.stored_volume_pct }} -- {{ row.stored_volume_hm3 }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

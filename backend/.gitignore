@@ -1,1 +1,6 @@
 config-data.txt
+<<<<<<< HEAD
+config.py
+=======
+>>>>>>> fd1445e71e4ba5fe645555a5cc94883373bca84b
+venv

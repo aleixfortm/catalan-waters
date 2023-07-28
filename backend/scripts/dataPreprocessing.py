@@ -1,6 +1,7 @@
 import pandas as pd
+from config import WILLY_BASE
 
-change_date = r'C:\Users\jdrem\Documents\Project1\catalan-waters\data\data1.csv'
+change_date = WILLY_BASE
 output_file = 'dataWithId.csv'
 
 # Read the CSV file

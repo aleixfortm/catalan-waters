@@ -1,5 +1,9 @@
 <template>
+  <v-hover v-slot="{ isHovering }">
     <v-card
+      @mouseover="handleMouseOver"
+      @mouseout="handleMouseOut"
+      :elevation="isHovering ? 24 : 6" 
       class="mx-auto"
       max-width="400"
     >
@@ -30,16 +34,30 @@
         </v-btn>
       </v-card-actions>
     </v-card>
+  </v-hover>
 </template>
 
 <script>
 
 export default {
     props: ["reservoirName", "reservoirPicture", "reservoirProvince"],
+    data() {
+      return {
+        isHovering: false
+      }
+    },
     computed: {
         imageSource() {
             return require(`@/assets/${this.reservoirPicture}`);
         }
+    },
+    methods: {
+      handleMouseOver() {
+        this.isHovering = true;
+      },
+      handleMouseOut() {
+        this.isHovering = false;
+      }
     }
 }
 </script>

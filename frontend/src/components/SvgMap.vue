@@ -199,19 +199,12 @@
    </svg>
    <div class="tooltip" v-if="showTooltip" :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }">
       <div class="tooltip-data">
-         <b>RegionID</b>
-         <br>
+         <div class="tooltip-data-value"><b>RegionID</b></div>
          {{ region }}
       </div>
       <div class="tooltip-data">
-         <b>Water volume [%]</b>
-         <br>
+         <div class="tooltip-data-value"><b>Water volume (%)</b></div>
          {{ percentage }}%
-      </div>
-      <div class="tooltip-data">
-         <b>Water volume [L]</b>
-         <br>
-         {{ volume }}L
       </div>
       <div class="disclaimer">Actual real-time data</div>
     </div>
@@ -226,38 +219,23 @@ export default {
       tooltipX: 0,
       tooltipY: 0,
       region: "",
-      percentage: 0,
-      volume: 0,
+      percentage: 0
     };
   },
   methods: {
     handleMouseOver(event) {
       // Handle hover over a region
       const regionId = event.target.getAttribute("id"); // Get the ID of the region
-      const regionBounds = event.target.getBoundingClientRect(); // Get the bounding box of the region
-      const svgBounds = event.target.closest("svg").getBoundingClientRect(); // Get the bounding box of the SVG
-
-      // Calculate the center position of the SVG region
-      const centerY = (regionBounds.top - svgBounds.top) + regionBounds.height / 2;
 
       // Set the tooltip content based on the region
       this.region = regionId;
       var randomDecimal = Math.random();
       var randomValue = randomDecimal * 80;
       this.percentage = Math.floor(randomValue);
-      randomDecimal = Math.random();
-      randomValue = randomDecimal * 10000;
-      this.volume = Math.floor(randomValue);
 
       const mouseY = event.pageY;
-
-      // Set the tooltip position to the center of the SVG region
+      this.tooltipY = mouseY + 30;
       this.tooltipX = event.pageX;
-      if (mouseY > centerY + 40) {
-         this.tooltipY = mouseY + 30;
-      } else {
-         this.tooltipY = centerY + 50;
-      }
 
 
       if (regionId !== "cat-map") {
@@ -290,7 +268,7 @@ export default {
    color: #00000077;
    margin: 100px 0 0 0;
    text-align: start;
-   margin-top: -8px;
+   margin-top: 0px;
 }
 
 .tooltip {
@@ -321,13 +299,11 @@ export default {
 }
 
 .tooltip-data {
-   margin-bottom: 15px;
+   margin-bottom: 5px;
 }
 
-.legend-container {
-   height: 100px;
-   width: 20px;
-   background-color: red;
+.tooltip-data-value {
+   margin-bottom: -2px;
 }
 
 .responsive-svg {

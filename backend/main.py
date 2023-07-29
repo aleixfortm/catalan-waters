@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from config import SQLALCHEMYURI
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 print('Flask app created!')
 ########### SQL CONNECTION ###########
@@ -36,7 +36,7 @@ def data_view():
     data = Data.query.all()
     return render_template('data.html', data = data)
 
-@app.route('/api/data')
+@app.route('/api')
 def api_data():
     data = Data.query.all()
 

@@ -1,17 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-
-  <BarChart />
+  <div id="app">
+    <h1>TESTING VUE APP</h1>
+    <apiChart />
+  </div>
 </template>
 
 <script>
 
-import BarChart from 'C:\\Users\\jdrem\\Documents\\Project1\\catalan-waters\\test-module\\src\\components\\Chart.vue'
+import apiChart from './components/apiChart.vue';
 
 export default {
   name: 'App',
-  components: { BarChart }
+  components: { 
+    apiChart 
+  }
 }
 
 </script>

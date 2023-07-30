@@ -2,7 +2,7 @@
   <div>
     <h1>This is a test to retrieve data from Flask</h1>
     <ul>
-      <li v-for="item in items" :key="item.id">{item.station}</li>
+      <li v-for="item in items" :key="item.id">{{item.station}}</li>
     </ul>
 
   </div>
@@ -22,14 +22,14 @@ export default {
     fetchItems() {
       fetch('http://127.0.0.1:5000/api')
         .then(response => response.json())
-        console.log(this.items)
         .then(data => {
           this.items = data;
+          console.log(this.items);
         })
-        
-        .catch(error => {
-          console.error('Error fetching items:', error);
-        });
+    },
+
+    filteredData() {
+      return this.items.filter(item => item.Station == "Embassament de Susqueda (Osor)");
     }
   }
 };

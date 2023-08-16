@@ -2,17 +2,21 @@
   <div>
     <h1>This is a test to retrieve data from Flask</h1>
     <ul>
-      <li v-for="item in items" :key="item.id">{{item.station}}</li>
+      <li v-for="item in filteredData" :key="item.id">
+        {{item.day}} : {{ item.absolut_volume }} {{ "L" }}</li>
     </ul>
+    <h1>This is a chart test using the data above</h1>
 
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      items: []
+      items: [],
+      maxItems: 100
     };
   },
   mounted() {
@@ -24,12 +28,14 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.items = data;
-          console.log(this.items);
         })
-    },
-
+    }
+  },
+  
+  computed: {
     filteredData() {
-      return this.items.filter(item => item.Station == "Embassament de Susqueda (Osor)");
+      const limitedItems = this.items.slice(0, this.maxItems);
+      return limitedItems.filter(item => item.station == "Embassament de Susqueda (Osor)");
     }
   }
 };
